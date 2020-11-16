@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+    "strconv"
 )
 
 func main() {
@@ -77,8 +78,8 @@ func writeFile(list []string, fileName string) {
 
 	writer := bufio.NewWriter(file)
 
-	for _, n := range list {
-		if _, err := writer.WriteString(n + "\n"); err != nil {
+	for i, n := range list {
+		if _, err := writer.WriteString(strconv.Itoa(i+1) + " " + n + "\n"); err != nil {
 			log.Fatal(err)
 		}
 	}
